@@ -68,6 +68,7 @@
         $scope.name = "";
         $scope.reverseme = function reverseme() {
             var rv = $scope.name;
+            console.log(rv)
             $http({
                 method : "GET",
                 url : "http://localhost:8080/rev?name="+rv
