@@ -27,7 +27,7 @@ public class ReverseController {
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping(value = "rev", method = RequestMethod.GET, produces = "application/json")
-    public Map getRev(@RequestParam(value="name", defaultValue="World") String name) {
+    public Map getRev(@RequestParam(value="value", defaultValue="World") String name) {
         return Collections.singletonMap("response", reverseString(name));
     }
 
