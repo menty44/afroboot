@@ -1,4 +1,4 @@
-package io.tulaa.controller;
+package com.blaqueyard.controller;
 
 /**
  * Created by admin on 6/22/18.

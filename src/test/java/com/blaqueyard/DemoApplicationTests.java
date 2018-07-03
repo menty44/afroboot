@@ -1,4 +1,4 @@
-package io.tulaa;
+package com.blaqueyard;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

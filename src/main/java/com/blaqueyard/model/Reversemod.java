@@ -1,4 +1,4 @@
-package io.tulaa.model;
+package com.blaqueyard.model;
 
 /**
  * Created by admin on 6/22/18.
