@@ -22,15 +22,14 @@
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Reverse</a></li>
-                <!--<li><a href="#addStudent">Add Student</a></li>-->
-                <!--<li><a href="#viewStudents">View Students</a></li>-->
-                <!--<li><a href="#">Page 3</a></li>-->
+                <li><a href="#addStudent">Add Student</a></li>
+                <li><a href="#viewStudents">View Students</a></li>
+                <li><a href="#">Page 3</a></li>
             </ul>
         </div>
     </nav>
 
-    <!--<p><a href = "#addStudent">Add Student</a></p>-->
-    <!--<p><a href = "#viewStudents">View Students</a></p>-->
+
     <div ng-view></div>
 
     <div ng-controller="ReverseController">
@@ -57,9 +56,17 @@
     mainApp.config(['$routeProvider', function($routeProvider) {
         $routeProvider.
 
-        otherwise({
-            redirectTo: '/'
-        });
+                when("/addStudent", {
+                    templateUrl : "addStudent.htm"
+                })
+
+                .when("/viewStudents", {
+                    templateUrl : "viewStudents.htm"
+                })
+
+                .otherwise({
+                    redirectTo: '/'
+                });
 
     }]);
 
