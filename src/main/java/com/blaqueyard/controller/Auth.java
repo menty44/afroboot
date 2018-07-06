@@ -92,8 +92,16 @@ public class Auth {
 
         Response response = client.newCall(request).execute();
         System.out.println(response.body().string());
-        return response.body().toString();
+        //System.out.println(response.body());
+        String fredresponse = response.body().string();
+
+
+
+        //tombaone();
+
+        return fredresponse;
     }
+
 
     //STK STKPushTransactionStatus  for mobile devices
     public String STKPushTransactionStatus( String businessShortCode, String password, String timestamp, String checkoutRequestID) throws IOException {
@@ -127,6 +135,17 @@ public class Auth {
         return response.body().toString();
 
     }
+
+
+
+
+        public String tombaone(String fredresponse){
+
+            String webserviceresponse = fredresponse;
+
+            return webserviceresponse;
+        }
+
 
 
 }
