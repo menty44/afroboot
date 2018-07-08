@@ -38,29 +38,29 @@ public class PhoneNumbersController {
         return phonenumberRepository.findAll();
     }
 
+    @CrossOrigin
     @GetMapping("/number/{id}")
-    public Phonenumbers getGenderById(@PathVariable(value = "id") Long phoneId) {
+    public Phonenumbers getnumberById(@PathVariable(value = "id") Long phoneId) {
         return phonenumberRepository.findById(phoneId)
                 .orElseThrow(() -> new ResourceNotFoundException("Phonenumber", "id", phoneId));
     }
 
-
+    @CrossOrigin
     @PutMapping("/number/{id}")
-    public Phonenumbers updateGender(@PathVariable(value = "id") Long phoneId,
-                               @Valid @RequestBody Phonenumbers GenderName) {
+    public Phonenumbers updatenumber(@PathVariable(value = "id") Long phoneId,
+                               @Valid @RequestBody Phonenumbers phonenumber) {
 
         Phonenumbers pn = phonenumberRepository.findById(phoneId)
                 .orElseThrow(() -> new ResourceNotFoundException("Phonenumber", "id", phoneId));
 
-        //gender.setTitle(noteDetails.getTitle());
-        pn.setName(GenderName.getName());
+        pn.setName(phonenumber.getPhonenumber());
 
-        Phonenumbers updatedGender = phonenumberRepository.save(pn);
-        return updatedGender;
+        Phonenumbers updatenumber = phonenumberRepository.save(pn);
+        return updatenumber;
     }
 
-
-    @DeleteMapping("/gender/{id}")
+    @CrossOrigin
+    @PostMapping("/number/{id}")
     public ResponseEntity<?> deleteNumber(@PathVariable(value = "id") Long phoneId) {
         Phonenumbers pn = phonenumberRepository.findById(phoneId)
                 .orElseThrow(() -> new ResourceNotFoundException("Phonenumber", "id", phoneId));
