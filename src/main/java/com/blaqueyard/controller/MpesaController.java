@@ -98,9 +98,9 @@ public class MpesaController {
         jsonObject.put("PhoneNumber", number);
         jsonObject.put("PartyA", number);
         jsonObject.put("PartyB", "174379");
-        jsonObject.put("CallBackURL", "http://callback.blaqueyard.com/mpesa/callback.php");
+        jsonObject.put("CallBackURL", "http://51.15.242.122:8310/c2b/confirmation");
         jsonObject.put("AccountReference", "fredLTD");
-        jsonObject.put("QueueTimeOutURL", "http://callback.blaqueyard.com/mpesa/callback.php");
+        jsonObject.put("QueueTimeOutURL", "tp://51.15.242.122:8310/c2b/confirmation");
         jsonObject.put("TransactionDesc", "fredLTD");
 
 
@@ -134,9 +134,18 @@ public class MpesaController {
         }
         in.close();
 
+        System.out.print("###########################################################################################\n");
+        System.out.print("\n");
+        System.out.print("\n");
         //printing result from response
+        System.out.println(response);
+        System.out.print("###########################################################################################\n");
+        System.out.print("\n");
+        System.out.print("\n");
         System.out.println(response.toString());
-
+        System.out.print("###########################################################################################\n");
+        System.out.print("\n");
+        System.out.print("\n");
 
         return response.toString();
     }
