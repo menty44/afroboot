@@ -36,16 +36,15 @@ public class Phonenumbers {
     @NotBlank
     private String phonenumber;
 
-    public String getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 
-    @NotBlank
-    private String duration;
+    private int duration;
 
     @NotBlank
     private String calldate;

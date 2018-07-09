@@ -145,7 +145,7 @@ Licensed under MIT
     }
 </style>
 
-<div ng-controller="testController">
+<div ng-controller="mainController">
     <div ng-init="reverseme()">
         <!--start hack-->
         <div class=" bs-component" >
@@ -191,7 +191,7 @@ Licensed under MIT
 
                     <td >{{gm.name}}</td>
                     <td > {{gm.phonenumber}}</td>
-                    <td >{{gm.calltype}}</td>
+                    <td ng-style="{'color': gm.calltype == 'Incoming'? 'black' : 'blue'}">{{gm.calltype}}</td>
                     <td >{{gm.calldate}}</td>
                     <td >{{gm.duration}}</td>
                     <td ng-style="{'color': gm.ans == 'Answered'? 'green' : 'red'}">{{gm.ans}}</td>

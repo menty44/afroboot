@@ -19,19 +19,48 @@
 
     <script src="fusioncharts.min.js"></script>
 
+
+    <script>
+        var mainApp = angular.module("mainApp", ['ngRoute','ng-fusioncharts']);
+
+        mainApp.config(['$routeProvider', function($routeProvider) {
+            $routeProvider.
+
+            when("/operator", {
+                controller: 'mainController',
+                templateUrl : "operator.html"
+            })
+
+                    .when("/viewduration", {
+                        templateUrl : "viewCalls.html"
+                    })
+
+                    .otherwise({
+                        redirectTo: '/',
+                        controller: 'mainController',
+                        templateUrl : "main.html"
+                    });
+
+        }]);
+
+
+    </script>
+    <script src="index.js"></script>
+
 </head>
 
 <body>
 <div ng-app = "mainApp">
     <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
+        <div class="container-fluid" ng-controller="mainController">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Tulaa Client</a>
             </div>
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Dashboard</a></li>
-                <li ng-controller="operatorController" ng-init="operator()"><a href="#operator">Network Operator</a></li>
-                <li><a href="#viewduration">Call Duration</a></li>
+                <li ng-click="operator()"><a href="#operator">Network Operator</a></li>
+                <!--<li><a href="#operator">Network Operator</a></li>-->
+                <li ng-click="duration()"><a href="#viewduration">Call Duration</a></li>
                 <!--<li><a href="#">Page 3</a></li>-->
             </ul>
         </div>
@@ -39,38 +68,11 @@
 
     <div ng-view></div>
 
-
-
 </div>
 
 
 
-<script>
-    var mainApp = angular.module("mainApp", ['ngRoute','ng-fusioncharts']);
 
-    mainApp.config(['$routeProvider', function($routeProvider) {
-        $routeProvider.
-
-                when("/operator", {
-                    controller: 'operatorController',
-                    templateUrl : "operator.html"
-                })
-
-                .when("/viewduration", {
-                    templateUrl : "viewCalls.html"
-                })
-
-                .otherwise({
-                    redirectTo: '/',
-                    controller: 'testController',
-                    templateUrl : "main.html"
-                });
-
-    }]);
-
-
-</script>
-<script src="index.js"></script>
 
 
 </body>
