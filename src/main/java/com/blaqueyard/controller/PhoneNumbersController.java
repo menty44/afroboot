@@ -1,4 +1,6 @@
-package com.blaqueyard.controller;/**
+package com.blaqueyard.controller;
+
+/**
  * Created by admin on 7/8/18.
  */
 
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Fredrick Oluoch
@@ -39,14 +42,14 @@ public class PhoneNumbersController {
     }
 
     @CrossOrigin
-    @GetMapping("/number/{id}")
+    @GetMapping("/getnumber/{id}")
     public Phonenumbers getnumberById(@PathVariable(value = "id") Long phoneId) {
         return phonenumberRepository.findById(phoneId)
                 .orElseThrow(() -> new ResourceNotFoundException("Phonenumber", "id", phoneId));
     }
 
     @CrossOrigin
-    @PutMapping("/number/{id}")
+    @PutMapping("/updatenumber/{id}")
     public Phonenumbers updatenumber(@PathVariable(value = "id") Long phoneId,
                                @Valid @RequestBody Phonenumbers phonenumber) {
 
@@ -60,7 +63,7 @@ public class PhoneNumbersController {
     }
 
     @CrossOrigin
-    @PostMapping("/number/{id}")
+    @PostMapping("/deletenumber/{id}")
     public ResponseEntity<?> deleteNumber(@PathVariable(value = "id") Long phoneId) {
         Phonenumbers pn = phonenumberRepository.findById(phoneId)
                 .orElseThrow(() -> new ResourceNotFoundException("Phonenumber", "id", phoneId));
@@ -71,5 +74,20 @@ public class PhoneNumbersController {
     }
 
 
+    @CrossOrigin
+    @GetMapping("/phoneno/{moboperator}")
+    public Optional<Phonenumbers> getnumberByMoboperator(@PathVariable(value = "phonenumber") String phonenumber) {
+
+        System.out.println("###########################################################################\n");
+        System.out.println("\n");
+        System.out.println(phonenumber);
+        System.out.println("\n");
+        System.out.println("###########################################################################\n");
+
+        Optional<Phonenumbers> pn = phonenumberRepository.findByNameIgnoreCase(phonenumber);
+
+        return pn;
+
+    }
 
 }
