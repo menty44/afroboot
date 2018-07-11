@@ -159,6 +159,9 @@ Licensed under MIT
                 <thead>
                 <tr>
                     <!--<th>View Options</th>-->
+                    <th ng-click="sort('operation')"> No
+                        <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
                     <th ng-click="sort('operation')"> Telco Name
                         <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                     </th>
@@ -180,6 +183,10 @@ Licensed under MIT
                         <span class="glyphicon sort-icon" ng-show="sortKey=='balance'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                     </th>
 
+                    <th ng-click="sort('balance')"> Customer Care Response
+                        <span class="glyphicon sort-icon" ng-show="sortKey=='balance'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+
                 </tr>
                 </thead>
 
@@ -189,12 +196,17 @@ Licensed under MIT
 
                 <tr >
 
+                    <td >{{$index+1}}</td>
                     <td >{{gm.name}}</td>
                     <td > {{gm.phonenumber}}</td>
                     <td ng-style="{'color': gm.calltype == 'Incoming'? 'black' : 'blue'}">{{gm.calltype}}</td>
                     <td >{{gm.calldate}}</td>
                     <td >{{gm.duration}}</td>
                     <td ng-style="{'color': gm.ans == 'Answered'? 'green' : 'red'}">{{gm.ans}}</td>
+                    <td>
+                        <span ng-if="gm.ans == 'Answered'"><h4>No Action Needed</h4></span>
+                        <button style="width: 100%" class="btn-danger" ng-if="gm.ans == 'VoiceMail'">CALL BACK</button>
+                    </td>
                 </tr>
 
                 </tbody>
