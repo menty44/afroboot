@@ -56,7 +56,8 @@ public class PhoneNumbersController {
         Phonenumbers pn = phonenumberRepository.findById(phoneId)
                 .orElseThrow(() -> new ResourceNotFoundException("Phonenumber", "id", phoneId));
 
-        pn.setName(phonenumber.getPhonenumber());
+        //pn.setN(phonenumber.getPhonenumber());
+        pn.setPhonenumber(phonenumber.getPhonenumber());
 
         Phonenumbers updatenumber = phonenumberRepository.save(pn);
         return updatenumber;
@@ -88,6 +89,20 @@ public class PhoneNumbersController {
 
         return pn;
 
+    }
+
+    @CrossOrigin
+    @PostMapping("/testme")
+    public List<Phonenumbers>  createtest(@PathVariable(value = "phonenumber") String pn) {
+
+        System.out.println("###########################################################################\n");
+        System.out.println("\n");
+        System.out.println(pn);
+        System.out.println("\n");
+        System.out.println("###########################################################################\n");
+        //return phonenumberRepository.save(pn);
+
+        return phonenumberRepository.findAll();
     }
 
 }

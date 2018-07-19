@@ -148,5 +148,10 @@ mainApp.controller('mainController', function($scope, $http) {
             $scope.err = response.response;
         });
     }
+
+    $scope.check = function check(num) {
+
+        console.log('Passed Number', num);
+    }
 });
 

@@ -168,6 +168,9 @@ Licensed under MIT
                     <th ng-click="sort('amount')"> Incoming PhoneNumber
                         <span class="glyphicon sort-icon" ng-show="sortKey=='amount'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                     </th>
+                    <th ng-click="sort('amount')"> Outgoing PhoneNumber
+                        <span class="glyphicon sort-icon" ng-show="sortKey=='amount'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
                     <th ng-click="sort('balance')"> Call Type
                         <span class="glyphicon sort-icon" ng-show="sortKey=='balance'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                     </th>
@@ -187,6 +190,10 @@ Licensed under MIT
                         <span class="glyphicon sort-icon" ng-show="sortKey=='balance'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
                     </th>
 
+                    <th ng-click="sort('balance')"> Relate
+                        <span class="glyphicon sort-icon" ng-show="sortKey=='balance'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+
                 </tr>
                 </thead>
 
@@ -198,14 +205,17 @@ Licensed under MIT
 
                     <td >{{$index+1}}</td>
                     <td >{{gm.name}}</td>
-                    <td > {{gm.phonenumber}}</td>
+                    <td style="color: blue">{{gm.phonenumber}}</td>
+                    <td > {{gm.incphonenumber}}</td>
+                    <td > {{gm.outphonenumber}}</td>
                     <td ng-style="{'color': gm.calltype == 'Incoming'? 'black' : 'blue'}">{{gm.calltype}}</td>
                     <td >{{gm.calldate}}</td>
                     <td >{{gm.duration}}</td>
                     <td ng-style="{'color': gm.ans == 'Answered'? 'green' : 'red'}">{{gm.ans}}</td>
                     <td>
-                        <span ng-if="gm.ans == 'Answered'"><h4>No Action Needed</h4></span>
-                        <button style="width: 100%" class="btn-danger" ng-if="gm.ans == 'VoiceMail'">CALL BACK</button>
+                        <button class="btn-success" ng-click="check(gm.phonenumber)">CHECK RELATIONS</button>
+                        <!--<span ng-if="gm.ans == 'Answered'"><h4>No Action Needed</h4></span>-->
+                        <!--<button style="width: 100%" class="btn-danger" ng-if="gm.ans == 'VoiceMail'">CALL BACK</button>-->
                     </td>
                 </tr>
 

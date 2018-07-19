@@ -21,6 +21,7 @@ public interface PhonenumberRepository extends JpaRepository<Phonenumbers, Long>
     //List<Phonenumbers> findBy(@Param("phonenumber") String phonenumber, Pageable page);
 
     Optional<Phonenumbers> findByNameIgnoreCase(String name);
+//    Optional<Phonenumbers> findByNameIgnoreCase(int phonenumber);
 
     //List<Phonenumbers> findByPhone(Long id);
     //List<Phonenumbers> findName(String name);

@@ -30,19 +30,16 @@ public class Phonenumbers {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    //@NotBlank
     private String name;
 
+    private int phonenumber;
+
     @NotBlank
-    private String phonenumber;
+    private int incphonenumber;
 
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
+    @NotBlank
+    private int outphonenumber;
 
     private int duration;
 
@@ -66,14 +63,6 @@ public class Phonenumbers {
     private Date updatedAt;
 
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -82,13 +71,53 @@ public class Phonenumbers {
         this.name = name;
     }
 
-    public String getPhonenumber() {
+    public int getIncphonenumber() {
+        return incphonenumber;
+    }
+
+    public int getOutphonenumber() {
+        return outphonenumber;
+    }
+
+    public int getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
+    public void setPhonenumber(int phonenumber) {
         this.phonenumber = phonenumber;
     }
+
+    public void setIncphonenumber(int incphonenumber) {
+        this.incphonenumber = incphonenumber;
+    }
+
+    public void setOutphonenumber(int outphonenumber) {
+        this.outphonenumber = outphonenumber;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+//    public int getName() {
+//        return name;
+//    }
+//
+//    public void setName(int name) {
+//        this.name = name;
+//    }
 
     public String getCalldate() {
         return calldate;
