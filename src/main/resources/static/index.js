@@ -37,12 +37,12 @@
 // var mainApp = angular.module('mainApp', ['ng-fusioncharts']);
 // angular.module('mainApp').controller('operatorController', ['$rootScope', '$scope', function ($scope, $http) {
 
-mainApp.controller('mainController', function($scope, $http) {
+mainApp.controller('mainController', function($scope, $http, $location) {
 
 
     $scope.reverseme = function reverseme() {
         var rv = $scope.name;
-        console.log(rv)
+        console.log(rv);
         $http({
             method : "GET",
             url : "http://localhost:8080/numbers"
@@ -55,12 +55,12 @@ mainApp.controller('mainController', function($scope, $http) {
             console.log(test);
             $scope.err = response.response;
         });
-    }
+    };
 
     $scope.duration = function duration() {
 
         var rv = $scope.name;
-        console.log(rv)
+        console.log(rv);
         $http({
             method : "GET",
             url : "http://localhost:8080/numbers"
@@ -97,15 +97,15 @@ mainApp.controller('mainController', function($scope, $http) {
                         value: "1050700"
                     }
                 ]
-            }
+            };
 
             Array.prototype.sum = function (prop) {
-                var total = 0
+                var total = 0;
                 for ( var i = 0, _len = this.length; i < _len; i++ ) {
                     total += this[i][prop]
                 }
                 return total
-            }
+            };
 
             // function sum(items, prop){
             //     return items.reduce( function(a, b){
@@ -147,11 +147,85 @@ mainApp.controller('mainController', function($scope, $http) {
             console.log(test);
             $scope.err = response.response;
         });
-    }
+    };
 
     $scope.check = function check(num) {
 
         console.log('Passed Number', num);
+    };
+
+    $scope.onausers = function onausers() {
+
+        console.log('users have been activated');
+
+        $http({
+            method : "GET",
+            url : "https://api.ona.io/api/v1/users?v=" + Date.now()
+        }).then(function mySuccess(response) {
+
+            var test = response.data;
+
+            // $scope.onadata =  test;
+
+            console.log('onausers', test);
+
+            $scope.curPage = 1;
+            $scope.itemsPerPage = 3;
+            $scope.maxSize = 5;
+
+            // this.onadata = test;
+            $scope.onadata =  test;
+
+
+            $scope.numOfPages = function () {
+                return Math.ceil(test.length / $scope.itemsPerPage);
+
+            };
+
+            $scope.$watch('curPage + numPerPage', function() {
+                var begin = (($scope.curPage - 1) * $scope.itemsPerPage),
+                    end = begin + $scope.itemsPerPage;
+
+                $scope.filteredItems = test.slice(begin, end);
+            });
+
+
+            // angular.forEach(test, function(value, key) {
+            //     console.log('my values',value);
+            //
+            //     $scope.onadata = value;
+            //     // angular.forEach(second, function(value, key) {
+            //     //
+            //     //     console.log('my values second',value);
+            //     // });
+            //
+            // });
+
+        })
+    };
+
+    $scope.onausersfetch = function onausersfetch(user) {
+
+        console.log('my search res',user);
+
+        $http({
+            method : "GET",
+            url : "https://api.ona.io/api/v1/users/"+user+"?v=" + Date.now()
+        }).then(function mySuccess(response) {
+
+            var test = response.data;
+            $scope.search = test;
+            console.log('my search res',test);
+
+        });
+    };
+
+
+
+    $scope.reloaduse = function reloaduse() {
+        $location.path('/another-route');
     }
-});
+
+
+    });
 

@@ -24,17 +24,21 @@
         var mainApp = angular.module("mainApp", ['ngRoute','ng-fusioncharts']);
 
         mainApp.config(['$routeProvider', function($routeProvider) {
-            $routeProvider.
-
-            when("/operator", {
-                controller: 'mainController',
-                templateUrl : "operator.html"
-            })
-
+            $routeProvider
+                    .when("/operator", {
+                        controller: 'mainController',
+                        templateUrl : "operator.html"
+                    })
                     .when("/viewduration", {
                         templateUrl : "viewCalls.html"
                     })
-
+                    .when("/onausers", {
+                        controller : 'mainController',
+                        templateUrl : "onausers.html"
+                    })
+                    .when('/another-route', {//this is the new "when"
+                        redirectTo: '/'
+                    })
                     .otherwise({
                         redirectTo: '/',
                         controller: 'mainController',
@@ -59,7 +63,7 @@
             <ul class="nav navbar-nav">
                 <!--<li class="active"><a href="#">Dashboard</a></li>-->
                 <!--<li ng-click="operator()"><a href="#operator">Network Operator</a></li>-->
-                <!--<li><a href="#operator">Network Operator</a></li>-->
+                <li><a href="#onausers">Users</a></li>
                 <!--<li ng-click="duration()"><a href="#viewduration">Call Duration</a></li>-->
                 <!--<li><a href="#">Page 3</a></li>-->
             </ul>
@@ -69,11 +73,6 @@
     <div ng-view></div>
 
 </div>
-
-
-
-
-
 
 </body>
 </html>
