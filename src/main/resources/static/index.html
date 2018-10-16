@@ -42,7 +42,7 @@
                     .otherwise({
                         redirectTo: '/',
                         controller: 'mainController',
-                        templateUrl : "main.html"
+                        templateUrl : "ona.html"
                     });
 
         }]);
@@ -63,7 +63,7 @@
             <ul class="nav navbar-nav">
                 <!--<li class="active"><a href="#">Dashboard</a></li>-->
                 <!--<li ng-click="operator()"><a href="#operator">Network Operator</a></li>-->
-                <li><a href="#onausers">Users</a></li>
+                <li><a ng-click="onausers()" href="#onausers">Users</a></li>
                 <!--<li ng-click="duration()"><a href="#viewduration">Call Duration</a></li>-->
                 <!--<li><a href="#">Page 3</a></li>-->
             </ul>
